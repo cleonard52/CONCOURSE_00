@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BABBDI PERIMETER // CONCOURSE_00</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Main 3D Canvas Context Wrapper Frame -->
+  <div id="canvas-container"></div>
+
+  <!-- Vintage CRT Phosphor Scanline Filter Layers -->
+  <div id="crt-overlay"></div>
+  <div id="visor-frame"></div>
+
+  <!-- Real-Time Flight Instrumentation Overlay (HUD) -->
+  <div id="hud">
+    <div class="hud-block">
+      <div class="label">SECTOR_DISTANCE</div>
+      <div id="score" class="val">0000 m</div>
+    </div>
+    <div class="hud-block">
+      <div class="label">RECORD_DISTANCE</div>
+      <div id="high-score" class="val">0000 m</div>
+    </div>
+    <div class="hud-block">
+      <div class="label">METRO_TOKENS</div>
+      <div class="val token-text"><span id="hud-tokens">000</span> TKN</div>
+    </div>
+    <div class="hud-block">
+      <div class="label">LATERAL_DRIFT</div>
+      <div id="drift" class="val">0000 m E</div>
+    </div>
+  </div>
+
+  <!-- Boot Terminal Interface / Meta Upgrade Screen Menu -->
+  <div id="overlay">
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <h1 id="title">CONCOURSE_00</h1>
+        <div class="wallet-badge"><span id="menu-tokens">0</span> TKN</div>
+      </div>
+      
+      <p id="subtitle">
+        OUTER RING CONCRETE EXPANSE. NO WALLS. ONLY FOG.<br>
+        [A / D] OR [ARROWS] STRAFE | [SPACE] JUMP OVER BARRIERS
+      </p>
+
+      <!-- System Categories Selector Panels -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="upgrades">SYSTEM UPGRADES</button>
+        <button class="tab-btn" data-tab="skins">SECTOR FIELDS</button>
+      </div>
+
+      <!-- Tab Content Area 1: Mechanical Improvements Grid -->
+      <div id="tab-upgrades" class="shop-grid">
+        <div class="shop-item">
+          <div class="item-info">
+            <div class="item-title">LATERAL THRUSTERS</div>
+            <div class="item-desc">Increases sideways strafe agility.</div>
+            <div id="lvl-strafe" class="item-lvl">LVL 1 / 5</div>
+          </div>
+          <button id="buy-strafe" class="buy-btn">25 TKN</button>
+        </div>
+        
+        <div class="shop-item">
+          <div class="item-info">
+            <div class="item-title">JUMP HYDRAULICS</div>
+            <div class="item-desc">Higher vertical vault clearance.</div>
+            <div id="lvl-jump" class="item-lvl">LVL 1 / 5</div>
+          </div>
+          <button id="buy-jump" class="buy-btn">25 TKN</button>
+        </div>
+
+        <div class="shop-item">
+          <div class="item-info">
+            <div class="item-title">TOKEN MAGNET</div>
+            <div class="item-desc">Pulls nearby tokens toward you.</div>
+            <div id="lvl-magnet" class="item-lvl">LVL 1 / 5</div>
+          </div>
+          <button id="buy-magnet" class="buy-btn">30 TKN</button>
+        </div>
+      </div>
+
+      <!-- Tab Content Area 2: Environment Modifiers Matrix (Worlds System) -->
+      <div id="tab-skins" class="shop-grid hidden">
+        <div class="shop-item">
+          <div class="item-info">
+            <div class="item-title">CONCRETE WASTES (WORLD 1)</div>
+            <div class="item-desc">Standard density. Baseline speed. 1.0x Score.</div>
+          </div>
+          <button class="buy-btn skin-btn" data-skin="default">DEPLOY</button>
+        </div>
+
+        <div class="shop-item">
+          <div class="item-info">
+            <div class="item-title">SODIUM VAPOR (WORLD 2)</div>
+            <div class="item-desc">+20% Speed, +25% Haz Density. +50% Tokens. 1.5x Score.</div>
+          </div>
+          <button class="buy-btn skin-btn" data-skin="sodium">50 TKN</button>
+        </div>
+
+        <div class="shop-item">
+          <div class="item-info">
+            <div class="item-title">RUST PERIMETER (WORLD 3)</div>
+            <div class="item-desc">+45% Speed, +50% Haz Density. +100% Tokens. 2.0x Score.</div>
+          </div>
+          <button class="buy-btn skin-btn" data-skin="rust">100 TKN</button>
+        </div>
+
+        <div class="shop-item">
+          <div class="item-info">
+            <div class="item-title">VOID INDUSTRIAL (WORLD 4)</div>
+            <div class="item-desc">+75% Speed, +100% Haz Density. +200% Tokens. 3.0x Score.</div>
+          </div>
+          <button class="buy-btn skin-btn" data-skin="void">175 TKN</button>
+        </div>
+      </div>
+
+      <!-- Terminal Primary Launch Initialization Controller -->
+      <button id="start-btn" class="primary-action">ENTER FOG</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
